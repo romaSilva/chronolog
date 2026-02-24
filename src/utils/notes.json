@@ -1,0 +1,82 @@
+[
+  {
+    "id": "9",
+    "title": "The Construction of the Great Wall of China",
+    "content": "Built over many centuries, the Great Wall of China stands as one of humanity's most impressive engineering feats. It was constructed for defense and protection against invasions.",
+    "date": "0200",
+    "createdAt": "2026-02-24T11:10:00Z",
+    "tags": ["history", "architecture", "ancient-world"]
+  },
+  {
+    "id": "5",
+    "title": "The Great Library of Alexandria",
+    "content": "The Great Library was one of the largest and most significant libraries of the ancient world, containing hundreds of thousands of scrolls and representing a repository of human knowledge.",
+    "date": "0300-05",
+    "createdAt": "2026-02-24T10:50:00Z",
+    "tags": ["history", "ancient-world", "knowledge"]
+  },
+  {
+    "id": "3",
+    "title": "The Printing Press",
+    "content": "Johannes Gutenberg invented the movable type printing press, which revolutionized the spread of information and democratized knowledge across Europe.",
+    "date": "1440",
+    "createdAt": "2026-02-24T10:40:00Z",
+    "tags": ["history", "invention", "communication"]
+  },
+  {
+    "id": "7",
+    "title": "Eiffel Tower Completion",
+    "content": "The Eiffel Tower was completed for the 1889 World's Fair in Paris. Originally meant to be temporary, it became an iconic symbol of France and a masterpiece of iron architecture.",
+    "date": "1889-03-31",
+    "createdAt": "2026-02-24T11:00:00Z",
+    "tags": ["architecture", "history", "landmarks"]
+  },
+  {
+    "id": "8",
+    "title": "First Computer Bug",
+    "content": "Grace Hopper documented the first computer bug - a moth found in the Harvard Mark II computer. This incident popularized the term 'debugging' in computer science.",
+    "date": "1947-09-09",
+    "createdAt": "2026-02-24T11:05:00Z",
+    "tags": ["computer-science", "history", "debugging"]
+  },
+  {
+    "id": "1",
+    "title": "Moon Landing",
+    "content": "Apollo 11 successfully landed on the moon with Neil Armstrong and Buzz Aldrin becoming the first humans to walk on the lunar surface. A monumental achievement in human exploration.",
+    "date": "1969-07-20",
+    "createdAt": "2026-02-24T10:30:00Z",
+    "tags": ["history", "space", "1960s"]
+  },
+  {
+    "id": "6",
+    "title": "TCP/IP Protocol Suite",
+    "content": "The development of TCP/IP protocols by Vint Cerf and Bob Kahn provided the foundation for modern internet communication and became the standard for data transmission.",
+    "date": "1974",
+    "createdAt": "2026-02-24T10:55:00Z",
+    "tags": ["computer-science", "networking", "internet"]
+  },
+  {
+    "id": "2",
+    "title": "Invention of the World Wide Web",
+    "content": "Tim Berners-Lee invented the World Wide Web while working at CERN, fundamentally changing how information is shared and accessed globally.",
+    "date": "1989",
+    "createdAt": "2026-02-24T10:35:00Z",
+    "tags": ["computer-science", "internet", "breakthrough"]
+  },
+  {
+    "id": "4",
+    "title": "Linux Kernel Released",
+    "content": "Linus Torvalds released the first version of the Linux kernel, which became the foundation for one of the most important open-source operating systems.",
+    "date": "1991-09-17",
+    "createdAt": "2026-02-24T10:45:00Z",
+    "tags": ["computer-science", "open-source", "operating-systems"]
+  },
+  {
+    "id": "10",
+    "title": "First Artificial Intelligence Win Against Humans",
+    "content": "Deep Blue, an IBM chess-playing computer, defeated world champion Garry Kasparov in a match, marking a significant milestone in artificial intelligence development.",
+    "date": "1997-05",
+    "createdAt": "2026-02-24T11:15:00Z",
+    "tags": ["computer-science", "artificial-intelligence", "breakthrough"]
+  }
+]
