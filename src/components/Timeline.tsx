@@ -1,40 +1,11 @@
-import { useState } from "react";
+import { Link } from "react-router-dom";
 import type { Note } from "../types/note";
-import NoteCard from "./NoteCard";
 import notesData from "../utils/notes.json";
 
 export default function Timeline() {
-  const [selectedNote, setSelectedNote] = useState<Partial<Note> | null>(null);
-
-  const handleNoteClick = (note: Note) => {
-    setSelectedNote(note);
-  };
-
-  const handleCloseNote = () => {
-    setSelectedNote(null);
-  };
-
-  const handleUpdateNote = (updatedNote: Partial<Note>) => {
-    // Update the note in your backend/state
-    console.log("Updated note:", updatedNote);
-    handleCloseNote();
-  };
-
-  if (selectedNote) {
-    return (
-      <div>
-        <button onClick={handleCloseNote}>Back to Timeline</button>
-        <NoteCard
-          initialNote={selectedNote}
-          onUpdate={handleUpdateNote}
-        />
-      </div>
-    );
-  }
-
   return (
     <div>
-      <h1>Timeline</h1>
+      <h1>Chronolog</h1>
       <div style={{ paddingLeft: "20px", borderLeft: "2px solid #ccc" }}>
         {notesData.map((note: Note) => (
           <div
@@ -56,14 +27,11 @@ export default function Timeline() {
                 backgroundColor: "#333",
               }}
             />
-            <button
-              onClick={() => handleNoteClick(note)}
+            <Link
+              to={`/note/${note.id}`}
               style={{
-                background: "none",
-                border: "none",
-                padding: "0",
-                cursor: "pointer",
-                textAlign: "left",
+                textDecoration: "none",
+                color: "inherit",
               }}
             >
               <h3 style={{ margin: "0 0 5px 0", color: "#0066cc" }}>
@@ -72,7 +40,7 @@ export default function Timeline() {
               <p style={{ margin: "0", color: "#666", fontSize: "0.9em" }}>
                 {note.date}
               </p>
-            </button>
+            </Link>
           </div>
         ))}
       </div>
