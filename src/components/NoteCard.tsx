@@ -1,16 +1,19 @@
 import { useState } from "react";
 import type { Note } from "../types/note";
+import * as noteService from "../services/noteService";
 
 interface NoteCardProps {
   initialNote?: Partial<Note>;
   onSubmit?: (note: Partial<Note>) => void;
   onUpdate?: (note: Partial<Note>) => void;
+  onDelete?: () => void;
 }
 
 export default function NoteCard({
   initialNote,
   onSubmit,
   onUpdate,
+  onDelete,
 }: NoteCardProps) {
   // Determine default mode: view if initialNote provided, edit otherwise
   const isCreatingMode = !initialNote;
@@ -30,7 +33,7 @@ export default function NoteCard({
     return dateRegex.test(dateString);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (!title.trim()) {
@@ -57,12 +60,23 @@ export default function NoteCard({
       tags,
     };
 
-    // If editing an existing note, call onUpdate; otherwise call onSubmit
-    if (initialNote && onUpdate) {
-      onUpdate(noteData);
-      setMode("view");
-    } else if (onSubmit) {
-      onSubmit(noteData);
+    try {
+      // If editing an existing note, call updateNote via service; otherwise call createNote
+      if (initialNote && initialNote.id) {
+        await noteService.updateNote(initialNote.id, noteData);
+        if (onUpdate) {
+          onUpdate(noteData);
+        }
+        setMode("view");
+      } else {
+        await noteService.createNote(noteData);
+        if (onSubmit) {
+          onSubmit(noteData);
+        }
+      }
+    } catch (error) {
+      console.error("Error saving note:", error);
+      alert("Failed to save note. Please try again.");
     }
   };
 
@@ -85,6 +99,25 @@ export default function NoteCard({
 
   const handleRemoveTag = (tagToRemove: string) => {
     setTags(tags.filter((tag) => tag !== tagToRemove));
+  };
+
+  const handleDelete = async () => {
+    if (
+      !initialNote?.id ||
+      !window.confirm("Are you sure you want to delete this note?")
+    ) {
+      return;
+    }
+
+    try {
+      await noteService.deleteNote(initialNote.id);
+      if (onDelete) {
+        onDelete();
+      }
+    } catch (error) {
+      console.error("Error deleting note:", error);
+      alert("Failed to delete note. Please try again.");
+    }
   };
 
   // View mode: formatted read-only display
@@ -114,6 +147,11 @@ export default function NoteCard({
           )}
         </div>
         <button onClick={() => setMode("edit")}>Edit</button>
+        {initialNote?.id && (
+          <button onClick={handleDelete} style={{ color: "red" }}>
+            Delete
+          </button>
+        )}
       </div>
     );
   }

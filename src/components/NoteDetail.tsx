@@ -1,10 +1,12 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import type { Note } from "../types/note";
 import NoteCard from "./NoteCard";
 import notesData from "../utils/notes.json";
+import * as noteService from "../services/noteService";
 
 export default function NoteDetail() {
   const { id } = useParams<{ id: string }>();
+  const navigate = useNavigate();
   const note = notesData.find((n: Note) => n.id === id);
 
   if (!note) {
@@ -21,10 +23,24 @@ export default function NoteDetail() {
     console.log("Updated note:", updatedNote);
   };
 
+  const handleDeleteNote = async () => {
+    if (!id) return;
+    try {
+      await noteService.deleteNote(id);
+      navigate("/");
+    } catch (error) {
+      console.error("Error deleting note:", error);
+    }
+  };
+
   return (
     <div>
       <Link to="/">← Back to Timeline</Link>
-      <NoteCard initialNote={note} onUpdate={handleUpdateNote} />
+      <NoteCard
+        initialNote={note}
+        onUpdate={handleUpdateNote}
+        onDelete={handleDeleteNote}
+      />
     </div>
   );
 }

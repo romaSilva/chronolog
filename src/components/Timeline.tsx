@@ -5,7 +5,6 @@ import notesData from "../utils/notes.json";
 export default function Timeline() {
   return (
     <div>
-      <h1>Chronolog</h1>
       <div style={{ paddingLeft: "20px", borderLeft: "2px solid #ccc" }}>
         {notesData.map((note: Note) => (
           <div
