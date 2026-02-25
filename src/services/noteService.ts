@@ -1,4 +1,5 @@
 import type { Note } from "../types/note";
+import notesData from "../utils/notes.json";
 
 /**
  * Creates a new note with an auto-generated ID
@@ -15,12 +16,11 @@ export async function createNote(note: Partial<Note>): Promise<Note> {
 /**
  * Retrieves a note by ID
  * @param id - The note ID
- * @returns Promise resolving to the note
+ * @returns Promise resolving to the note, or null if not found
  */
-export async function readNote(id: string): Promise<Note> {
-  // TODO: Implement backend call to fetch note
-  console.log("readNote called with id:", id);
-  throw new Error("Not implemented");
+export async function readNote(id: string): Promise<Note | null> {
+  const note = notesData.find((n: Note) => n.id === id);
+  return note || null;
 }
 
 /**

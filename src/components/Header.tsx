@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { ROUTES } from "../utils/routes";
 
 export default function Header() {
   return (
@@ -17,7 +18,7 @@ export default function Header() {
         }}
       >
         <h1>Chronolog</h1>
-        <Link to="/note/new">
+        <Link to={ROUTES.NOTE_NEW}>
           <button>Add Note</button>
         </Link>
       </div>

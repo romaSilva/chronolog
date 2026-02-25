@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { ROUTES } from "../utils/routes";
 import type { Note } from "../types/note";
 import notesData from "../utils/notes.json";
 
@@ -27,7 +28,7 @@ export default function Timeline() {
               }}
             />
             <Link
-              to={`/note/${note.id}`}
+              to={ROUTES.NOTE_VIEW(note.id)}
               style={{
                 textDecoration: "none",
                 color: "inherit",
